@@ -49,7 +49,16 @@ public class ventanaclientes extends javax.swing.JFrame  {
                 comboBox2.setSelectedIndex(-1);
             }
         });
-
+        
+        comboBox2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Optional<Publicacion > optionalLibro = ComboBoxItem.getSelectedContent(comboBox2).map(o -> (Publicacion) o);
+                optionalLibro.ifPresent(libro -> {
+                    label.setText(libro.toString());
+                });
+            }
+        });
 
 
     }
